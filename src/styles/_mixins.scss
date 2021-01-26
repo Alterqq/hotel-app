@@ -1,0 +1,50 @@
+@import "./variables";
+
+@mixin grey-text-color($opacity: 0.5) {
+  color: rgba(31, 32, 65, $opacity);
+}
+
+@mixin button-gradient($color: white) {
+  padding: 10px 20px;
+  border-radius: 22px;
+  color: $color;
+  text-transform: uppercase;
+  font: {
+    weight: bold;
+    size: 12px;
+  }
+  background: $gradient;
+
+  &:hover {
+    background: $opacityGradient;
+  }
+}
+
+@mixin button-white {
+  @include button-gradient();
+  position: relative;
+  border: none;
+
+  &:hover {
+    background: $opacityGradient;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    bottom: 2px;
+    left: 2px;
+    right: 2px;
+    background: #fff;
+    border-radius: inherit;
+    z-index: 1;
+  }
+
+  span {
+    color: $purpleText;
+    position: relative;
+    z-index: 2;
+    font-size: 12px;
+  }
+}
