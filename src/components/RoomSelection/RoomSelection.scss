@@ -1,0 +1,71 @@
+@import "./src/styles/mixins";
+@import "./src/styles/variables";
+
+.selection {
+  width: 380px;
+  padding: 30px;
+  box-shadow: $shadowCommon;
+  position: relative;
+
+  h2 {
+    font: {
+      weight: bold;
+      size: 24px;
+    }
+    color: $darkText;
+  }
+
+  h3 {
+    @include title;
+    margin-bottom: 5px;
+  }
+
+  & > * {
+    margin-bottom: 21px;
+  }
+
+  &__dates {
+    display: flex;
+    gap: 20px;
+
+    &_area {
+      position: relative;
+
+      span {
+        @include dropdown-arrow;
+      }
+    }
+
+    input {
+      width: 150px;
+      height: 44px;
+      @include input
+    }
+  }
+
+  &__guests {
+    position: relative;
+    &_dropdown {
+      @include input
+    }
+    span {
+      @include dropdown-arrow;
+    }
+  }
+
+  &__button {
+    @include button-gradient;
+    margin-bottom: 0;
+    position: relative;
+
+    span {
+      position: absolute;
+      top: 5px;
+      right: 7px;
+    }
+  }
+
+}
+
+
+

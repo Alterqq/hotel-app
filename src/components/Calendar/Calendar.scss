@@ -1,0 +1,130 @@
+@import "./src/styles/mixins";
+@import "./src/styles/variables";
+
+.calendar {
+  position: absolute;
+  top: 180px;
+  left: 29px;
+  border: $border;
+  border-radius: 4px;
+  z-index: 2;
+  background-color: white;
+
+  * {
+    padding: 0;
+  }
+
+  &__datepicker {
+    padding: 20px 10px 10px;
+    width: 320px;
+    border-radius: 4px;
+  }
+
+  .rdrMonthAndYearWrapper {
+    height: auto;
+    margin-bottom: 30px;
+  }
+
+  .rdrMonthAndYearPickers {
+    font-size: 19px;
+    font-weight: bold;
+  }
+
+  .rdrMonth {
+    width: auto;
+  }
+
+  .rdrWeekDay {
+    font: {
+      size: 12px;
+      weight: bold;
+    }
+    color: $purpleText;
+  }
+
+  .rdrDayNumber span {
+    font-size: 12px;
+    @include grey-text-color;
+  }
+
+  .rdrDayDisabled {
+    background: #ffffff;
+
+    .rdrDayNumber span {
+      @include grey-text-color($opacity: 0.25)
+    }
+  }
+
+  .rdrEndEdge {
+    @include selectedDay;
+
+    & ~ .rdrDayNumber {
+      background: linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 30%, rgba(188, 156, 255, 0.25) 100%);
+      span {
+        font-weight: bold;
+      }
+    }
+  }
+
+  .rdrStartEdge {
+    @include selectedDay;
+
+    & ~ .rdrDayNumber {
+      background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 30%, rgba(188, 156, 255, 0.25) 100%);
+      span {
+        font-weight: bold;
+      }
+    }
+  }
+
+  .rdrInRange {
+    background: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%);
+    opacity: 0.25;
+
+    & + .rdrDayNumber span {
+      color: rgba(31, 32, 65, 0.25) !important;
+    }
+  }
+
+  .rdrDayToday {
+    background: $currentDayColor;
+    border-radius: 50%;
+
+    .rdrDayNumber {
+      span {
+        color: #ffffff;
+        font-weight: bold;
+      }
+
+      span:after {
+        content: none;
+      }
+    }
+  }
+
+  .rdrNextPrevButton {
+    background: transparent;
+    z-index: 3;
+
+    i {
+      border-style: none;
+    }
+  }
+  .material-icons {
+    position: absolute;
+    color: $purpleText;
+  }
+
+  .arrow-forward {
+    right: 18px;
+    top: 23px;
+  }
+
+  .arrow-back {
+    left: 18px;
+    top: 23px;
+  }
+}
+
+
+

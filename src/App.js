@@ -1,12 +1,16 @@
-import React from "react";
-import styles from './App.module.scss';
-import Header from './components/Header/Header';
+import React from "react"
+import './App.scss'
+import Header from './components/Header/Header'
+import RoomSelection from './components/RoomSelection/RoomSelection';
 
 function App() {
   return (
-      <div className={styles.app}>
-        <div className={styles.wrapper}>
+      <div className='app'>
+        <div className='wrapper'>
           <Header/>
+
+          <RoomSelection/>
+
         </div>
       </div>
   )

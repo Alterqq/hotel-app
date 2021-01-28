@@ -9,6 +9,7 @@
   border-radius: 22px;
   color: $color;
   text-transform: uppercase;
+  text-align: center;
   font: {
     weight: bold;
     size: 12px;
@@ -17,6 +18,7 @@
 
   &:hover {
     background: $opacityGradient;
+    cursor: pointer;
   }
 }
 
@@ -27,6 +29,7 @@
 
   &:hover {
     background: $opacityGradient;
+    cursor: pointer;
   }
 
   &::before {
@@ -47,4 +50,38 @@
     z-index: 2;
     font-size: 12px;
   }
+}
+
+@mixin title {
+  text-transform: uppercase;
+  font: {
+    weight: bold;
+    size: 12px;
+  }
+  color: $darkText;
+}
+
+@mixin input {
+  padding: 11px 0 11px 15px;
+  border: $border;
+  border-radius: 4px;
+  outline: none;
+}
+
+@mixin dropdown-arrow {
+    position: absolute;
+    top: 30px;
+    right: 5px;
+    @include grey-text-color;
+    cursor: pointer;
+}
+
+@mixin selectedDay {
+  height: 43px;
+  position: absolute;
+  left: 0;
+  border-radius: 50%;
+  width: 46px;
+  top: -1px;
+  background: $gradient;
 }

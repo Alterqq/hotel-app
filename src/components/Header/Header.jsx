@@ -1,23 +1,26 @@
 import React from 'react'
-import styles from './Header.module.scss'
+import './Header.scss'
 import logo from '../../assets/img/logo.svg'
-import Arrow from '../common/Arrow';
 
 const Header = () => {
   return (
-      <header className={styles.header}>
+      <header className='header'>
         <img src={logo} alt=""/>
         <nav>
-          <ul className={styles.navList}>
+          <ul className='header__navList'>
             <li>О нас</li>
-            <li>Услуги <Arrow/></li>
+            <li>Услуги
+              <span className="material-icons">keyboard_arrow_down</span>
+            </li>
             <li>Вакансии</li>
             <li>Новости</li>
-            <li>Соглашения <Arrow/></li>
+            <li>Соглашения
+              <span className="material-icons">keyboard_arrow_down</span>
+            </li>
           </ul>
-          <div className={styles.buttons}>
-            <div className={styles.login}><span>Войти</span></div>
-            <div className={styles.reg}>Зарегистрироваться</div>
+          <div className='header__buttons'>
+            <div className='header__buttons_login'><span>Войти</span></div>
+            <div className='header__buttons_reg'>Зарегистрироваться</div>
           </div>
         </nav>
       </header>
