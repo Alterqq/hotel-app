@@ -1,0 +1,32 @@
+@import "./src/styles/mixins";
+@import "./src/styles/variables";
+
+.selection__guests_dropdown {
+
+  &-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 7px;
+  }
+
+  &-counter-button {
+    width: 30px;
+    height: 30px;
+    border: $border;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  &-counter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100px;
+  }
+}
+
+

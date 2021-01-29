@@ -1,0 +1,48 @@
+@import "./src/styles/mixins";
+@import "./src/styles/variables";
+
+.selection {
+  width: 380px;
+  padding: 30px;
+  box-shadow: $shadowCommon;
+  position: relative;
+  background: white;
+
+  h2 {
+    font: {
+      weight: bold;
+      size: 24px;
+    }
+    color: $darkText;
+  }
+
+  h3 {
+    @include title;
+    margin-bottom: 5px;
+  }
+
+  & > * {
+    margin-bottom: 21px;
+  }
+
+  &__dates {
+    display: flex;
+    gap: 20px;
+  }
+
+  &__button {
+    @include button-gradient;
+    margin-bottom: 0;
+    position: relative;
+
+    span {
+      position: absolute;
+      top: 5px;
+      right: 7px;
+    }
+  }
+
+}
+
+
+

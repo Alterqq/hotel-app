@@ -1,13 +1,15 @@
-import React from "react";
-import styles from './App.module.scss';
-import Header from './components/Header/Header';
+import React from "react"
+import './App.scss'
+import Header from './components/Header/Header'
+import Footer from './components/Footer/Footer';
+import LandingPage from './pages/LandingPage/LandingPage';
 
 function App() {
   return (
-      <div className={styles.app}>
-        <div className={styles.wrapper}>
+      <div className='app'>
           <Header/>
-        </div>
+          <LandingPage/>
+          <Footer/>
       </div>
   )
 }

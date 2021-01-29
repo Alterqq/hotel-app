@@ -1,0 +1,55 @@
+@import "./src/styles/mixins";
+@import "./src/styles/variables";
+
+.header {
+  padding: 18px 0;
+  align-items: center;
+  background: transparent;
+  box-shadow: $shadowBottom;
+  width: 100%;
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin: $contentWidth;
+  }
+
+  &__navList {
+    display: flex;
+    list-style: none;
+
+    li {
+      display: flex;
+      align-items: center;
+      margin-right: 20px;
+      @include grey-text-color($opacity: 0.75);
+
+      &:first-child {
+        font-weight: bold;
+      }
+    }
+
+    span {
+      @include grey-text-color;
+      cursor: pointer;
+    }
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+  }
+
+  &__buttons {
+    display: flex;
+
+    &_reg {
+      @include button-gradient;
+    }
+
+    &_login {
+      @include button-white;
+      margin-right: 20px;
+    }
+  }
+}
