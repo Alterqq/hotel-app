@@ -8,44 +8,50 @@ import inst from '../../assets/img/inst-icon.svg'
 const Footer = () => {
   return (
       <footer className='footer'>
-        <div className='footer__info'>
-          <div className='footer__list'>
-            <img src={logo} alt=""/>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, laudantium.</p>
-          </div>
+        <div className='footer__wrapper'>
+          <div className='footer__info'>
+            <div className='footer__list'>
+              <img src={logo} alt=""/>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, laudantium.</p>
+            </div>
 
-          <div className='footer__list'>
-            <ul>
-              <li className='footer__list_title'>Title</li>
-              <li>text</li>
-              <li>text</li>
-              <li>text</li>
-            </ul>
-          </div>
+            <div className='footer__list'>
+              <ul>
+                <li className='footer__list_title'>Навигация</li>
+                <li>О нас</li>
+                <li>Новости</li>
+                <li>Служба поддержки</li>
+                <li>Услуги</li>
+              </ul>
+            </div>
 
-          <div className='footer__list'>
-            <ul>
-              <li className='footer__list_title'>Title</li>
-              <li>text</li>
-              <li>text</li>
-              <li>text</li>
-            </ul>
-          </div>
+            <div className='footer__list'>
+              <ul>
+                <li className='footer__list_title'>О нас</li>
+                <li>О сервисе</li>
+                <li>Наша команда</li>
+                <li>Вакансии</li>
+                <li>Инвесторы</li>
+              </ul>
+            </div>
 
-          <div className='footer__list'>
-            <ul>
-              <li className='footer__list_title'>Title</li>
-              <li>text</li>
-              <li>text</li>
-              <li>text</li>
-            </ul>
-          </div>
+            <div className='footer__list'>
+              <ul>
+                <li className='footer__list_title'>Служба поддержки</li>
+                <li>Соглашения</li>
+                <li>Сообщества</li>
+                <li>Связь с нами</li>
+              </ul>
+            </div>
 
-          <div className='footer__list'>
-            <h3 className='footer__list_title'>Title</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, minima!</p>
-            <span className="material-icons">arrow_forward</span>
-            <input type="text" placeholder="Email"/>
+            <div className='footer__list'>
+              <h3 className='footer__list_title'>Подписка</h3>
+              <p>Получайте специальные предложения и новости сервиса</p>
+              <div className='footer__list_subscribe'>
+                <span className="material-icons">arrow_forward</span>
+                <input type="text" placeholder="Email"/>
+              </div>
+            </div>
           </div>
         </div>
         <hr/>

@@ -1,12 +1,14 @@
 import React from 'react'
-import {DateRange} from 'react-date-range';
-import {ru} from 'react-date-range/dist/locale';
+import {DateRange} from 'react-date-range'
+import {ru} from 'react-date-range/dist/locale'
 import {addDays} from "date-fns"
 import 'react-date-range/dist/styles.css'
 import 'react-date-range/dist/theme/default.css'
 import './Calendar.scss'
+import {connect} from 'react-redux';
 
-const Calendar = ({date, setDate}) => {
+
+const Calendar = ({date, setDate, setView, ...props}) => {
   return (
       <div className='calendar'>
         <span className="material-icons arrow-back">arrow_back</span>
@@ -23,8 +25,18 @@ const Calendar = ({date, setDate}) => {
             showSelectionPreview={false}
             showPreview={false}
         />
+        <div className='calendar__buttons'>
+          <div onClick={() => setDate([props.defaultDate])}>Очистить</div>
+          <div onClick={() => setView(false)}>Применить</div>
+        </div>
       </div>
   )
 }
 
-export default Calendar
+const mapStateToProps = (state) => {
+  return {
+    defaultDate: state.roomSelection.defaultDate
+  }
+}
+
+export default connect(mapStateToProps, {})(Calendar)

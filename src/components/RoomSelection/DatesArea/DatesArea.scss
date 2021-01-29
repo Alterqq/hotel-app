@@ -1,0 +1,16 @@
+@import "./src/styles/mixins";
+@import "./src/styles/variables";
+
+.selection__dates_area {
+  position: relative;
+
+  span {
+    @include dropdown-arrow;
+  }
+}
+
+input {
+  width: 150px;
+  height: 44px;
+  @include input
+}

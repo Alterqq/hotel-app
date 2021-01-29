@@ -2,6 +2,10 @@
 @import "./src/styles/variables";
 
 .footer {
+
+  &__wrapper {
+    margin: $contentWidth;
+  }
   &__info {
     display: flex;
     padding: 100px 0;
@@ -19,7 +23,7 @@
   &__list {
     display: flex;
     flex-direction: column;
-    min-width: 200px;
+    max-width: 200px;
     @include grey-text-color();
     position: relative;
 
@@ -27,11 +31,19 @@
       @include title
     }
 
-    span {
-      position: absolute;
-      bottom: -11px;
-      right: 6px;
-      color: $purpleText;
+    &_subscribe {
+      position: relative;
+
+      input {
+        @include input;
+        width: 100%;
+      }
+      span {
+        position: absolute;
+        bottom: -11px;
+        right: 6px;
+        color: $purpleText;
+      }
     }
   }
 
@@ -47,17 +59,13 @@
     }
   }
 
-  input {
-    @include input;
-  }
-
-
   &__copyright {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 23px 0;
     box-shadow: $shadowBottom;
+    margin: $contentWidth;
 
     img {
       margin-right: 20px;

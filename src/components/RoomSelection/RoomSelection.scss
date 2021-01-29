@@ -6,6 +6,7 @@
   padding: 30px;
   box-shadow: $shadowCommon;
   position: relative;
+  background: white;
 
   h2 {
     font: {
@@ -27,30 +28,6 @@
   &__dates {
     display: flex;
     gap: 20px;
-
-    &_area {
-      position: relative;
-
-      span {
-        @include dropdown-arrow;
-      }
-    }
-
-    input {
-      width: 150px;
-      height: 44px;
-      @include input
-    }
-  }
-
-  &__guests {
-    position: relative;
-    &_dropdown {
-      @include input
-    }
-    span {
-      @include dropdown-arrow;
-    }
   }
 
   &__button {

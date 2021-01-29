@@ -1,0 +1,24 @@
+@import "./src/styles/mixins";
+@import "./src/styles/variables";
+
+.landing-page {
+  background-image: url('../../assets/img/landing-background.png');
+  max-width: 1440px;
+  height: 900px;
+
+  &__wrapper {
+    margin: $contentWidth;
+    padding-top: 70px;
+    position: relative;
+    height: 100%;
+
+    p {
+      position: absolute;
+      right: 0;
+      bottom: 20px;
+      max-width: 300px;
+      text-align: right;
+      color: $darkText
+    }
+  }
+}

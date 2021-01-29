@@ -1,0 +1,34 @@
+@import "./src/styles/mixins";
+@import "./src/styles/variables";
+
+.selection__guests {
+  position: relative;
+  width: 100%;
+  &_input {
+    @include input;
+    cursor: pointer;
+  }
+
+  &_dropdown {
+    position: absolute;
+    @include input;
+    left: 0;
+    right: 0;
+    overflow-y: auto;
+    z-index: 2;
+    background-color: white;
+    padding-top: 7px;
+    padding-bottom: 7px;
+
+
+
+    &-buttons {
+      padding-top: 12px;
+      @include clear-apply;
+    }
+  }
+  .material-icons {
+    @include dropdown-arrow;
+  }
+}
+

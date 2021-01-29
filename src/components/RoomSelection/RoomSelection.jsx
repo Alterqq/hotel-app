@@ -2,6 +2,8 @@ import React, {useState} from 'react'
 import {addDays} from 'date-fns';
 import './RoomSelection.scss'
 import Calendar from '../Calendar/Calendar';
+import SelectGuests from '../SelectGuests/SelectGuests';
+import DatesArea from './DatesArea/DatesArea';
 
 const RoomSelection = () => {
 
@@ -12,43 +14,26 @@ const RoomSelection = () => {
       key: 'selection'
     }
   ])
-  const [view, setView] = useState(true)
+  const [viewCalendar, setViewCalendar] = useState(false)
 
   return (
       <div className='selection'>
         <h2>Найдём номера под ваши пожелания</h2>
         <div className="selection__dates">
-          <div className='selection__dates_area' onClick={() => setView(!view)}>
-            <h3>Прибытие</h3>
-            <span className="material-icons">keyboard_arrow_down</span>
-            <input
-                placeholder='ДД.ММ.ГГГГ'
-                type="text"
-                value={date[0].startDate.toLocaleDateString() || ''}
-                readOnly
-            />
-          </div>
-          <div className='selection__dates_area' onClick={() => setView(!view)}>
-            <h3>Выезд</h3>
-            <span className="material-icons">keyboard_arrow_down</span>
-            <input
-                placeholder='ДД.ММ.ГГГГ'
-                type="text"
-                value={date[0].endDate.toLocaleDateString() || ''}
-                readOnly
-            />
-          </div>
+          <DatesArea
+              viewCalendar={viewCalendar}
+              setViewCalendar={setViewCalendar}
+              date={date[0].startDate}/>
+          <DatesArea
+              viewCalendar={viewCalendar}
+              setViewCalendar={setViewCalendar}
+              date={date[0].endDate}/>
         </div>
-        <div className="selection__guests">
-          <h3>Гости</h3>
-          <span className="material-icons">keyboard_arrow_down</span>
-          <div className="selection__guests_dropdown">Сколько гостей</div>
-        </div>
-        <div className="selection__button">
-          <span className="material-icons">arrow_forward</span>
-          Подобрать номер
-        </div>
-        {view && <Calendar date={date} setDate={setDate}/>}
+        <SelectGuests/>
+        {viewCalendar && <Calendar
+            date={date}
+            setDate={setDate}
+            setView={setViewCalendar}/>}
       </div>
   )
 }

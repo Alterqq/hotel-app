@@ -56,10 +56,11 @@
   }
 
   .rdrEndEdge {
-    @include selectedDay;
+    @include selected-day;
 
     & ~ .rdrDayNumber {
       background: linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 30%, rgba(188, 156, 255, 0.25) 100%);
+
       span {
         font-weight: bold;
       }
@@ -67,10 +68,11 @@
   }
 
   .rdrStartEdge {
-    @include selectedDay;
+    @include selected-day;
 
     & ~ .rdrDayNumber {
       background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 30%, rgba(188, 156, 255, 0.25) 100%);
+
       span {
         font-weight: bold;
       }
@@ -110,6 +112,7 @@
       border-style: none;
     }
   }
+
   .material-icons {
     position: absolute;
     color: $purpleText;
@@ -123,6 +126,11 @@
   .arrow-back {
     left: 18px;
     top: 23px;
+  }
+
+  &__buttons {
+    padding: 20px;
+    @include clear-apply;
   }
 }
 

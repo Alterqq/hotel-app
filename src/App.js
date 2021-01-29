@@ -1,17 +1,15 @@
 import React from "react"
 import './App.scss'
 import Header from './components/Header/Header'
-import RoomSelection from './components/RoomSelection/RoomSelection';
+import Footer from './components/Footer/Footer';
+import LandingPage from './pages/LandingPage/LandingPage';
 
 function App() {
   return (
       <div className='app'>
-        <div className='wrapper'>
           <Header/>
-
-          <RoomSelection/>
-
-        </div>
+          <LandingPage/>
+          <Footer/>
       </div>
   )
 }
