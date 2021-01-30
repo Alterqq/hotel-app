@@ -1,0 +1,14 @@
+@import "./src/styles/mixins";
+@import "./src/styles/variables";
+
+
+.search-room {
+  &__wrapper {
+    margin: $contentWidth;
+    display: grid;
+    grid-template-columns: 264px 1fr;
+    grid-template-rows: auto;
+    column-gap: 50px;
+    padding-top: 30px;
+  }
+}

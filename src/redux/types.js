@@ -1,0 +1,5 @@
+export const ADD_GUEST = 'roomSelection/ADD_GUEST'
+export const REMOVE_GUEST = 'roomSelection/REMOVE_GUEST'
+export const CLEAR_GUESTS_COUNTER = 'roomSelection/CLEAR_GUESTS_COUNTER'
+export const ADD_CONVENIENCE = 'roomSelection/ADD_CONVENIENCE'
+export const REMOVE_CONVENIENCE = 'roomSelection/REMOVE_CONVENIENCE'

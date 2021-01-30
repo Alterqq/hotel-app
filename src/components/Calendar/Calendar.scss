@@ -3,8 +3,8 @@
 
 .calendar {
   position: absolute;
-  top: 180px;
-  left: 29px;
+  top: 70px;
+  left: 0;
   border: $border;
   border-radius: 4px;
   z-index: 2;
@@ -113,7 +113,7 @@
     }
   }
 
-  .material-icons {
+  .arrow-back, .arrow-forward {
     position: absolute;
     color: $purpleText;
   }

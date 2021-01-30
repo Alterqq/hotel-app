@@ -1,38 +1,30 @@
-import {clearGuestsCounter, getGuestsCounter, getTotalGuests} from '../utils';
+import {clearCounter, getCounter, getTotalFacilities, getTotalGuests} from '../utils';
+import {ADD_CONVENIENCE, ADD_GUEST, CLEAR_GUESTS_COUNTER, REMOVE_CONVENIENCE, REMOVE_GUEST} from './types';
+import initialState from './initialState';
 
-export const ADD_GUEST = 'roomSelection/ADD_GUEST'
-export const REMOVE_GUEST = 'roomSelection/REMOVE_GUEST'
-export const CLEAR_COUNTER = 'roomSelection/CLEAR_COUNTER'
-
-const initialState = {
-  defaultDate: {
-    startDate: new Date(),
-    endDate: new Date(),
-    key: 'selection'
-  },
-  guests: [
-    {type: 'adult', title: 'Взрослые', counter: 0},
-    {type: 'children', title: 'Дети', counter: 0},
-    {type: 'babies', title: 'Младенцы', counter: 0}
-  ],
-  totalGuests: 'Сколько'
-}
 
 const roomSelectionReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_GUEST:
-      return {...state, guests: getGuestsCounter(state, action), totalGuests: getTotalGuests(state.guests)}
     case REMOVE_GUEST:
-      return {...state, guests: getGuestsCounter(state, action), totalGuests: getTotalGuests(state.guests)}
-    case CLEAR_COUNTER:
-      return {...state, guests: clearGuestsCounter(state), totalGuests: getTotalGuests(state.guests)}
+      return {
+        ...state,
+        guests: getCounter(state, action, 'guests', ADD_GUEST, REMOVE_GUEST),
+        totalGuests: getTotalGuests(state.guests)
+      }
+    case CLEAR_GUESTS_COUNTER:
+      return {...state,
+        guests: clearCounter(state, 'guests'),
+        totalGuests: getTotalGuests(state.guests)}
+    case ADD_CONVENIENCE:
+    case REMOVE_CONVENIENCE:
+      return {...state,
+        facilities: getCounter(state, action, 'facilities', ADD_CONVENIENCE, REMOVE_CONVENIENCE),
+        totalFacilities: getTotalFacilities(state.facilities, state.totalFacilities)
+      }
     default:
       return state
   }
 }
-
-export const addGuest = (payload) => ({type: ADD_GUEST, payload})
-export const removeGuest = (payload) => ({type: REMOVE_GUEST, payload})
-export const clearCounter = () => ({type: CLEAR_COUNTER})
 
 export default roomSelectionReducer
