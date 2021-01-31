@@ -1,16 +1,27 @@
 import React, {useState} from 'react'
-import Slider from '@material-ui/core/Slider';
-import Checkbox from './Checkbox/Checkbox';
-import {getDay, getShortMonthName} from '../../utils';
+import Slider from '@material-ui/core/Slider'
+import Checkbox from './Checkbox/Checkbox'
+import {getDay, getShortMonthName} from '../../utils'
+import Calendar from '../Calendar/Calendar'
+import SelectGuests from '../SelectGuests/SelectGuests'
+import SelectFacilities from '../SelectFacilities/SelectFacilities'
 import './Filters.scss'
-import Calendar from '../Calendar/Calendar';
-import SelectGuests from '../SelectGuests/SelectGuests';
-import SelectFacilities from '../SelectFacilities/SelectFacilities';
 
 const Filters = ({date, setDate}) => {
   const [price, setPrice] = useState([3000, 7000])
   const [viewCalendar, setViewCalendar] = useState(false)
   const [viewCheckboxDropDown, setViewCheckboxDropDown] = useState(false)
+  const [smoke, setSmoke] = useState(false)
+  const [pets, setPets] = useState(false)
+  const [guests, setGuests] = useState(false)
+  const [corridor, setCorridor] = useState(false)
+  const [helper, setHelper] = useState(false)
+  const [breakfast, setBreakfast] = useState(false)
+  const [table, setTable] = useState(false)
+  const [chair, setChair] = useState(false)
+  const [crib, setCrib] = useState(false)
+  const [tv, setTv] = useState(false)
+  const [shampoo, setShampoo] = useState(false)
 
   const startMonth = getShortMonthName(date, 'startDate')
   const endMonth = getShortMonthName(date, 'endDate')
@@ -35,7 +46,6 @@ const Filters = ({date, setDate}) => {
         <div className="filters__item">
           <SelectGuests/>
         </div>
-
         <div className='filters__item'>
           <div className="filters__price_header">
             <h3>Диапазон цены</h3>
@@ -52,42 +62,38 @@ const Filters = ({date, setDate}) => {
             Стоимость за сутки пребывания в номере
           </p>
         </div>
-
         <div className="filters__item">
           <h3 className='filters__title'>Правила дома</h3>
           <div className="filters__rules">
-            <Checkbox id={'smoke'} title={'Можно курить'}/>
-            <Checkbox id={'pets'} title={'Можно с питомцами'}/>
-            <Checkbox id={'guests'} title={'Можно пригласить гостей'}/>
+            <Checkbox id={'smoke'} title={'Можно курить'} possibility={smoke} setPossibility={setSmoke}/>
+            <Checkbox id={'pets'} title={'Можно с питомцами'} possibility={pets} setPossibility={setPets}/>
+            <Checkbox id={'guests'} title={'Можно пригласить гостей'} possibility={guests} setPossibility={setGuests}/>
           </div>
         </div>
         <div className="filters__item">
           <h3 className="filters__title">Доступность</h3>
-          <Checkbox id={'corridor'} title={'Широкий корридор'}/>
-          <Checkbox id={'helper'} title={'Помощник для инвалидов'}/>
+          <Checkbox id={'corridor'} title={'Широкий корридор'} possibility={corridor} setPossibility={setCorridor}/>
+          <Checkbox id={'helper'} title={'Помощник для инвалидов'} possibility={helper} setPossibility={setHelper}/>
         </div>
-
         <div className="filters__item">
           <SelectFacilities/>
         </div>
-
         <div className="filters__item">
           <h3 className='filters__title checkbox' onClick={() => setViewCheckboxDropDown(!viewCheckboxDropDown)}>
             Дополнительные удобства
             <span className="material-icons arrow-down">keyboard_arrow_down</span>
           </h3>
-
           {viewCheckboxDropDown && <div className="filters__checkbox-dropdown">
-            <Checkbox id={'breakfast'} title={'Завтрак'}/>
-            <Checkbox id={'table'} title={'Письменный стол'}/>
-            <Checkbox id={'chair'} title={'Стул для кормления'}/>
-            <Checkbox id={'crib'} title={'Кроватка'}/>
-            <Checkbox id={'tv'} title={'Телевизор'}/>
-            <Checkbox id={'shampoo'} title={'Шампунь'}/>
+            <Checkbox id={'breakfast'} title={'Завтрак'} possibility={breakfast} setPossibility={setBreakfast}/>
+            <Checkbox id={'table'} title={'Письменный стол'} possibility={table} setPossibility={setTable}/>
+            <Checkbox id={'chair'} title={'Стул для кормления'} possibility={chair} setPossibility={setChair}/>
+            <Checkbox id={'crib'} title={'Кроватка'} possibility={crib} setPossibility={setCrib}/>
+            <Checkbox id={'tv'} title={'Телевизор'} possibility={tv} setPossibility={setTv}/>
+            <Checkbox id={'shampoo'} title={'Шампунь'} possibility={shampoo} setPossibility={setShampoo}/>
           </div>}
         </div>
       </div>
   )
 }
 
-export default Filters;
+export default Filters

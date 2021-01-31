@@ -1,5 +1,5 @@
 import React from 'react'
-import RoomSelection from '../../components/RoomSelection/RoomSelection';
+import RoomSelection from '../../components/RoomSelection/RoomSelection'
 import './LandingPage.scss'
 
 const LandingPage = ({date, setDate}) => {
@@ -13,4 +13,4 @@ const LandingPage = ({date, setDate}) => {
   )
 }
 
-export default LandingPage;
+export default LandingPage

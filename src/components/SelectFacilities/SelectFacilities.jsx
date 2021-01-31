@@ -1,8 +1,8 @@
 import React, {useState} from 'react'
-import {connect} from 'react-redux';
-import DropdownItem from '../DropdownItem/DropdownItem';
-import {addConvenience, removeConvenience} from '../../redux/actions';
-import {getPropString} from '../../utils';
+import {connect} from 'react-redux'
+import DropdownItem from '../DropdownItem/DropdownItem'
+import {addConvenience, removeConvenience} from '../../redux/actions'
+import {getPropString} from '../../utils'
 
 const SelectFacilities = ({facilities, addConvenience, removeConvenience, bedrooms, beds, bathrooms}) => {
   const [viewFacilities, setViewFacilities] = useState(false)

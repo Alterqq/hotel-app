@@ -1,4 +1,4 @@
-import {ADD_CONVENIENCE, ADD_GUEST, CLEAR_GUESTS_COUNTER, REMOVE_CONVENIENCE, REMOVE_GUEST} from './types';
+import {ADD_CONVENIENCE, ADD_GUEST, CLEAR_GUESTS_COUNTER, REMOVE_CONVENIENCE, REMOVE_GUEST} from './types'
 
 export const addGuest = (payload) => ({type: ADD_GUEST, payload})
 export const removeGuest = (payload) => ({type: REMOVE_GUEST, payload})

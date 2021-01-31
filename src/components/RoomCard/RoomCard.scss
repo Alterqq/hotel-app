@@ -1,0 +1,62 @@
+@import "./src/styles/mixins";
+@import "./src/styles/variables";
+
+.room-card {
+  max-width: 271px;
+
+  &__info {
+    padding: 20px;
+  }
+
+  &__title {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    h3 {
+      font-weight: bold;
+    }
+
+    span {
+      @include title;
+      color: $purpleText
+    }
+  }
+
+  &__description {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: $border;
+    padding-bottom: 12px;
+
+    &_price {
+      @include grey-text-color;
+
+      span {
+        font-weight: bold;
+        margin-right: 5px;
+      }
+    }
+  }
+
+  &__appraisals {
+    padding-top: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__stars {
+    .star {
+      color: $purpleText;
+    }
+  }
+
+  &__reviews {
+    @include grey-text-color;
+
+    span {
+      font-weight: bold;
+    }
+  }
+}

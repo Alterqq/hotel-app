@@ -1,6 +1,6 @@
-import {clearCounter, getCounter, getTotalFacilities, getTotalGuests} from '../utils';
-import {ADD_CONVENIENCE, ADD_GUEST, CLEAR_GUESTS_COUNTER, REMOVE_CONVENIENCE, REMOVE_GUEST} from './types';
-import initialState from './initialState';
+import {clearCounter, getCounter, getTotalFacilities, getTotalGuests} from '../utils'
+import {ADD_CONVENIENCE, ADD_GUEST, CLEAR_GUESTS_COUNTER, REMOVE_CONVENIENCE, REMOVE_GUEST} from './types'
+import initialState from './initialState'
 
 
 const roomSelectionReducer = (state = initialState, action) => {

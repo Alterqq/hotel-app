@@ -1,0 +1,25 @@
+@import "./src/styles/mixins";
+@import "./src/styles/variables";
+
+.room-profile {
+
+  &__wrapper {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    margin: $contentWidth;
+  }
+
+  &_images {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    margin-bottom: 70px;
+
+    img:first-child {
+      grid-row: 1/3;
+      grid-column: 1/2;
+    }
+  }
+
+
+}

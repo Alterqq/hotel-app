@@ -48,3 +48,11 @@ export const getTotalFacilities = (facilities, total) => {
   })
   return total
 }
+
+export const getStars = (stars) => {
+  const arr = []
+  for (let i = 0; i < 5; i++) {
+    arr.push({value: `${stars > i ? 'star' : 'star_border'}`, id: i})
+  }
+  return arr
+}

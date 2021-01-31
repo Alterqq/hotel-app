@@ -1,6 +1,6 @@
 import React from 'react'
-import Filters from '../../components/Filters/Filters';
-import SearchingResults from '../../components/SearchingResults/SearchingResults';
+import Filters from '../../components/Filters/Filters'
+import SearchingResults from '../../components/SearchingResults/SearchingResults'
 import './SearchRoomPage.scss'
 
 const SearchRoomPage = ({date, setDate}) => {
@@ -14,4 +14,4 @@ const SearchRoomPage = ({date, setDate}) => {
   )
 }
 
-export default SearchRoomPage;
+export default SearchRoomPage

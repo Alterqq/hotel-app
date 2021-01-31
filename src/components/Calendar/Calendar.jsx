@@ -5,7 +5,7 @@ import {addDays} from "date-fns"
 import 'react-date-range/dist/styles.css'
 import 'react-date-range/dist/theme/default.css'
 import './Calendar.scss'
-import {connect} from 'react-redux';
+import {connect} from 'react-redux'
 
 
 const Calendar = ({date, setDate, setView, ...props}) => {

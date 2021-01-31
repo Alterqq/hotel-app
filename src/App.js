@@ -1,8 +1,11 @@
-import React, {useState} from "react"
-import './App.scss'
+import React, {useState} from 'react'
+import {addDays} from 'date-fns'
 import Header from './components/Header/Header'
-import SearchRoomPage from './pages/SearchRoomPage/SearchRoomPage';
-import {addDays} from "date-fns";
+import {compose} from 'redux';
+import {withRouter} from 'react-router-dom';
+import Footer from './components/Footer/Footer';
+import RoomProfilePage from './pages/RoomProfilePage/RoomProfilePage';
+import './App.scss'
 
 const App = () => {
   const [date, setDate] = useState([
@@ -14,10 +17,17 @@ const App = () => {
   ])
   return (
       <div className='app'>
-          <Header/>
-          <SearchRoomPage date={date} setDate={setDate}/>
+        <Header/>
+        {/*<Switch>*/}
+        {/*  <Route exact path="/" render={() => <LandingPage date={date} setDate={setDate}/>}/>*/}
+        {/*  <Route path="/search" render={() => <SearchRoomPage date={date} setDate={setDate}/>}/>*/}
+        {/*</Switch>*/}
+        <RoomProfilePage date={date} setDate={setDate}/>
+        <Footer/>
       </div>
   )
 }
 
-export default App;
+export default compose(
+    withRouter
+)(App)

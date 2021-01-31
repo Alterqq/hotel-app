@@ -1,5 +1,5 @@
 import React from 'react'
-import './Footer.scss';
+import './Footer.scss'
 import logo from '../../assets/img/logo.svg'
 import tw from '../../assets/img/tw-icon.svg'
 import fb from '../../assets/img/fb-icon.svg'
@@ -67,4 +67,4 @@ const Footer = () => {
   )
 }
 
-export default Footer;
+export default Footer

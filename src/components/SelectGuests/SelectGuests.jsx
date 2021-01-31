@@ -1,9 +1,9 @@
 import React, {useState} from 'react'
 import './SelectGuests.scss'
-import DropdownItem from '../DropdownItem/DropdownItem';
-import {connect} from 'react-redux';
-import {getPropString} from '../../utils';
-import {addGuest, clearCounter, removeGuest} from '../../redux/actions';
+import DropdownItem from '../DropdownItem/DropdownItem'
+import {connect} from 'react-redux'
+import {getPropString} from '../../utils'
+import {addGuest, clearCounter, removeGuest} from '../../redux/actions'
 
 const SelectGuests = ({guests, addGuest, removeGuest, totalGuests, clearCounter}) => {
   const [viewSelectGuests, setViewSelectGuests] = useState(false)
@@ -42,4 +42,4 @@ const mapStateToProps = (state) => {
     totalGuests: state.roomSelection.totalGuests
   }
 }
-export default connect(mapStateToProps, {addGuest, removeGuest, clearCounter})(SelectGuests);
+export default connect(mapStateToProps, {addGuest, removeGuest, clearCounter})(SelectGuests)
