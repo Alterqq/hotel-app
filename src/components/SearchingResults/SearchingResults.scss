@@ -13,5 +13,9 @@
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: auto;
     gap: 10px;
+    a {
+      text-decoration: none;
+      color: $darkText;
+    }
   }
 }

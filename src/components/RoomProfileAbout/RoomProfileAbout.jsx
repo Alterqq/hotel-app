@@ -4,61 +4,42 @@ import smile from '../../assets/img/smile.svg'
 import building from '../../assets/img/bulding.svg'
 import fire from '../../assets/img/fire.svg'
 import './RoomProfileAbout.scss'
+import AboutItem from './AboutItem/AboutItem';
+import {getAllVotes, getPropString} from '../../utils';
 
-const RoomProfileAbout = () => {
-  const data01 = [
-    {name: 'Group A', value: 140},
-    {name: 'Group B', value: 70},
-    {name: 'Group C', value: 70},
-    {name: 'Group D', value: 0},
+const RoomProfileAbout = ({profile}) => {
+  const votes = [
+    {name: 'Великолепно', value: profile.votes[0]},
+    {name: 'Хорошо', value: profile.votes[1]},
+    {name: 'Удовлетворительно', value: profile.votes[2]},
+    {name: 'Разочарован', value: profile.votes[3]},
   ]
   const COLORS = ['#FFE39C', '#6FCF97', '#BC9CFF', '#909090']
+  const allVotes = getAllVotes(profile.votes)
   return (
       <>
         <div className="room-profile__about">
           <div className="room-profile__about_data">
             <h3>Сведения о номере</h3>
-
-            <div className='room-profile__about_item'>
-              <img src={smile} alt="comfort"/>
-              <div className='room-profile__about_item-info'>
-                <h4 className="room-profile__about_subtitle">Комфорт</h4>
-                <span>Шумопоглащающие стены</span>
-              </div>
-            </div>
-
-            <div className='room-profile__about_item'>
-              <img src={building} alt="convenience"/>
-              <div className='room-profile__about_item-info'>
-                <h4 className="room-profile__about_subtitle">Удобство</h4>
-                <span>Окно в каждой из спален</span>
-              </div>
-            </div>
-
-            <div className='room-profile__about_item'>
-              <img src={fire} alt="cosiness"/>
-              <div className='room-profile__about_item-info'>
-                <h4 className="room-profile__about_subtitle">Уют</h4>
-                <span>Номер оснащен камином</span>
-              </div>
-            </div>
-
+            {profile.comfort && <AboutItem image={smile} title='Комфорт' content={profile.comfort}/>}
+            {profile.convenience && <AboutItem image={building} title='Удобство' content={profile.convenience}/>}
+            {profile.cosiness && <AboutItem image={fire} title='Уют' content={profile.cosiness}/>}
           </div>
           <div className="room-profile__about_impressions">
             <h3>Впечатления о номере</h3>
             <div className='room-profile__about_votes'>
               <div className='room-profile__about_votes-number'>
-                <span>260</span>
-                <span>голосов</span>
+                <span>{allVotes}</span>
+                <span>{getPropString(allVotes, 'голос', 'голоса', 'голосов')}</span>
               </div>
               <PieChart width={130} height={130}>
                 <Pie dataKey="value"
                      isAnimationActive={false}
-                     data={data01}
+                     data={votes}
                      cx={60} cy={60}
                      outerRadius={60}
                      innerRadius={55}
-                >{data01
+                >{votes
                     .map((entry, index) => <Cell
                         key={`cell-${index}`}
                         fill={COLORS[index % COLORS.length]}/>)}

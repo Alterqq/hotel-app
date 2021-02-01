@@ -1,10 +1,10 @@
 import React, {useState} from 'react'
 import {connect} from 'react-redux'
 import DropdownItem from '../DropdownItem/DropdownItem'
-import {addConvenience, removeConvenience} from '../../redux/actions'
+import {addConvenience, clearConvenienceCounter, removeConvenience} from '../../redux/actions'
 import {getPropString} from '../../utils'
 
-const SelectFacilities = ({facilities, addConvenience, removeConvenience, bedrooms, beds, bathrooms}) => {
+const SelectFacilities = ({facilities, addConvenience, removeConvenience, bedrooms, beds, bathrooms, clearConvenienceCounter}) => {
   const [viewFacilities, setViewFacilities] = useState(false)
   const facilitiesString = `
         ${bedrooms} 
@@ -32,7 +32,7 @@ const SelectFacilities = ({facilities, addConvenience, removeConvenience, bedroo
             add={addConvenience}
             remove={removeConvenience}/>)}
           <div className="filters__dropdown-buttons">
-            <div>Очистить</div>
+            <div onClick={clearConvenienceCounter}>Очистить</div>
             <div onClick={() => setViewFacilities(false)}>Применить</div>
           </div>
         </div>}
@@ -50,4 +50,6 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, {addConvenience, removeConvenience})(SelectFacilities)
+export default connect(
+    mapStateToProps, {addConvenience, removeConvenience, clearConvenienceCounter}
+)(SelectFacilities)

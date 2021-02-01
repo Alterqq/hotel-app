@@ -6,6 +6,11 @@
   padding: 30px;
   box-shadow: $shadowCommon;
 
+  p {
+    color: red;
+    font-size: 12px;
+  }
+
   h3 {
     @include title;
     margin-bottom: 5px;
@@ -43,6 +48,7 @@
 
   &__dates {
     display: flex;
+    flex-wrap: wrap;
     gap: 20px;
     position: relative;
     margin-bottom: 20px;
@@ -50,6 +56,10 @@
 
   &__guests {
     margin-bottom: 20px;
+
+    p {
+      margin-top: 10px;
+    }
   }
 
   &__price {
@@ -83,11 +93,18 @@
   &__button {
     @include button-gradient;
     position: relative;
+    border: none;
+    outline: none;
+    width: 100%;
 
     span {
       position: absolute;
       right: 10px;
       top: 5px;
     }
+  }
+
+  .disabled {
+    background: $opacityGradient;
   }
 }

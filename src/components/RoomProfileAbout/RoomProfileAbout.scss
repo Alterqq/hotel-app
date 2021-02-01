@@ -16,25 +16,7 @@
     font-weight: bold;
   }
 
-  &_item {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 40px;
 
-    &-info {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-
-      h4 {
-        font-weight: bold;
-      }
-
-      span {
-        @include grey-text-color;
-      }
-    }
-  }
 
   &_impressions {
   }

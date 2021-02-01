@@ -1,3 +1,4 @@
+
 export const getCounter = (state, action, key, addType, removeType) => {
   return state[key].map(item => {
     if (item.type === action.payload.type) {
@@ -55,4 +56,27 @@ export const getStars = (stars) => {
     arr.push({value: `${stars > i ? 'star' : 'star_border'}`, id: i})
   }
   return arr
+}
+
+export const setRoom = (rooms, number, dispatch) => {
+  rooms.find(room => room.number === +number && dispatch(room))
+}
+
+export const getAllVotes = (votes) => {
+  return votes.reduce((acc, item) => acc + item)
+}
+
+export const getDiffDays = (start, end) => {
+  const t2 = end.getTime()
+  const t1 = start.getTime()
+  return parseInt((t2-t1)/(24*3600*1000))
+}
+
+export const getAdditionallyCount = (additionally) => {
+  let counter = 0
+  const keys = Object.keys(additionally)
+  keys.forEach(key => {
+    if (additionally[key] === true) counter++
+  })
+  return counter
 }

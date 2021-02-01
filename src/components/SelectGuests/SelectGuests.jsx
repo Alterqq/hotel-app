@@ -3,9 +3,9 @@ import './SelectGuests.scss'
 import DropdownItem from '../DropdownItem/DropdownItem'
 import {connect} from 'react-redux'
 import {getPropString} from '../../utils'
-import {addGuest, clearCounter, removeGuest} from '../../redux/actions'
+import {addGuest, clearGuestsCounter, removeGuest} from '../../redux/actions'
 
-const SelectGuests = ({guests, addGuest, removeGuest, totalGuests, clearCounter}) => {
+const SelectGuests = ({guests, addGuest, removeGuest, totalGuests, clearGuestsCounter}) => {
   const [viewSelectGuests, setViewSelectGuests] = useState(false)
 
   return (
@@ -17,7 +17,7 @@ const SelectGuests = ({guests, addGuest, removeGuest, totalGuests, clearCounter}
               className="selection__guests_input"
               onClick={() => setViewSelectGuests(!viewSelectGuests)}
           ><span className="material-icons">{viewSelectGuests ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}</span>
-            {totalGuests} {getPropString(totalGuests, 'гость', 'гостя', 'гостей')}</div>
+            {totalGuests || 'Сколько'} {getPropString(totalGuests, 'гость', 'гостя', 'гостей')}</div>
 
           {viewSelectGuests && <div className='selection__guests_dropdown'>
             {guests.map(guest => <DropdownItem
@@ -27,7 +27,7 @@ const SelectGuests = ({guests, addGuest, removeGuest, totalGuests, clearCounter}
                 remove={removeGuest}
             />)}
             <div className='selection__guests_dropdown-buttons'>
-              <div onClick={clearCounter}>Очистить</div>
+              <div onClick={clearGuestsCounter}>Очистить</div>
               <div onClick={() => setViewSelectGuests(false)}>Применить</div>
             </div>
           </div>}
@@ -42,4 +42,4 @@ const mapStateToProps = (state) => {
     totalGuests: state.roomSelection.totalGuests
   }
 }
-export default connect(mapStateToProps, {addGuest, removeGuest, clearCounter})(SelectGuests)
+export default connect(mapStateToProps, {addGuest, removeGuest, clearGuestsCounter})(SelectGuests)

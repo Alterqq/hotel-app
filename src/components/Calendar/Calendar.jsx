@@ -1,7 +1,7 @@
 import React from 'react'
 import {DateRange} from 'react-date-range'
 import {ru} from 'react-date-range/dist/locale'
-import {addDays} from "date-fns"
+import {addDays} from 'date-fns'
 import 'react-date-range/dist/styles.css'
 import 'react-date-range/dist/theme/default.css'
 import './Calendar.scss'
