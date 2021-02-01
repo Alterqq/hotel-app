@@ -1,0 +1,48 @@
+@import "./src/styles/mixins";
+@import "./src/styles/variables";
+
+.room-profile__rules {
+  display: flex;
+  gap: 50px;
+
+  span, p {
+    @include grey-text-color;
+    margin-bottom: 10px;
+  }
+
+  h3 {
+    margin-bottom: 20px;
+    font-size: 19px;
+    font-weight: bold;
+  }
+
+  &_main {
+    display: flex;
+    flex-direction: column;
+    max-width: 250px;
+    margin-left: 20px;
+
+    span {
+      position: relative;
+
+      &:before {
+        position: absolute;
+        content: '';
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: rgba(31, 32, 65, 0.25);
+        top: 3px;
+        left: -20px;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &_cancel {
+    max-width: 370px;
+  }
+}

@@ -11,37 +11,13 @@
   &__wrapper {
     display: flex;
     justify-content: space-between;
-    margin: $contentWidth;
-  }
-
-  &__navList {
-    display: flex;
-    list-style: none;
-
-    li {
-      display: flex;
-      align-items: center;
-      margin-right: 20px;
-      @include grey-text-color($opacity: 0.75);
-
-      &:first-child {
-        font-weight: bold;
-      }
-    }
-
-    span {
-      @include grey-text-color;
-      cursor: pointer;
-    }
-  }
-
-  nav {
-    display: flex;
     align-items: center;
+    margin: $contentWidth;
   }
 
   &__buttons {
     display: flex;
+    align-items: center;
 
     &_reg {
       @include button-gradient;

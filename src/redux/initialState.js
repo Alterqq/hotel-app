@@ -49,49 +49,12 @@ const initialState = {
       comfort: 'Шумопоглащающие стены',
       convenience: 'Wi-fi в номере',
       cosiness: 'Камин в номере',
-      comments: [],
       rules: [
         'Нельзя курить в номере',
         'Без вечеринок и мероприятий',
         'Время прибытия — после 13:00, а выезд до 12:00'
       ],
       cancel: true,
-      sprites: {small, large1, large2, large3}
-    },
-    {
-      filter: {
-        startDate: '',
-        endDate: '',
-        guests: 3,
-        price: 9990,
-        withSmoke: true,
-        withPets: false,
-        withGuests: false,
-        withCorridor: false,
-        withHelper: false,
-        withBreakfast: true,
-        withTable: true,
-        withChair: false,
-        withCrib: false,
-        withTv: false,
-        withShampoo: true,
-        bedrooms: 1,
-        beds: 3,
-        bathrooms: 1,
-      },
-      stars: 4,
-      number: 840,
-      isLuxury: false,
-      comfort: 'Есть балкон',
-      convenience: 'Большие окна',
-      cosiness: '',
-      comments: [],
-      rules: [
-        'Можно курить в номере',
-        'Без вечеринок и мероприятий',
-        'Без домашних питомцев'
-      ],
-      cancel: false,
       sprites: {small, large1, large2, large3}
     },
   ]

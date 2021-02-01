@@ -2,10 +2,12 @@ import React from 'react'
 import large1 from '../../assets/img/room-large1.png'
 import large2 from '../../assets/img/room-large2.png'
 import large3 from '../../assets/img/room-large3.png'
+import RoomProfileAbout from '../../components/RoomProfileAbout/RoomProfileAbout';
+import RoomRules from '../../components/RoomRules/RoomRules';
 import './RoomProfilePage.scss'
-import RoomProfileInfo from '../../components/RoomProfileInfo/RoomProfileInfo';
+import Booking from '../../components/Booking/Booking';
 
-const RoomProfilePage = () => {
+const RoomProfilePage = ({date, setDate}) => {
   return (
       <div className='room-profile'>
         <div className="room-profile_images">
@@ -15,11 +17,11 @@ const RoomProfilePage = () => {
         </div>
         <div className="room-profile__wrapper">
           <div className="room-profile__info">
-            <RoomProfileInfo/>
-
+            <RoomProfileAbout/>
+            <RoomRules/>
           </div>
           <div className="room-profile__booking">
-
+            <Booking date={date} setDate={setDate}/>
           </div>
         </div>
       </div>

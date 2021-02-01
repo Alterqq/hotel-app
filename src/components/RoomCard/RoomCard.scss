@@ -47,6 +47,9 @@
   }
 
   &__stars {
+    padding-top: 8px;
+    display: flex;
+    justify-content: center;
     .star {
       color: $purpleText;
     }
