@@ -7,6 +7,7 @@
   &_input {
     @include input;
     cursor: pointer;
+    position: relative;
   }
 
   &_dropdown {
@@ -29,6 +30,7 @@
   }
   .material-icons {
     @include dropdown-arrow;
+    top: 10px;
   }
 }
 

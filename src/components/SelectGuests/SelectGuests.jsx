@@ -1,40 +1,37 @@
 import React, {useState} from 'react'
 import './SelectGuests.scss'
-import DropdownItem from './DropdownItem/DropdownItem';
-import {connect} from 'react-redux';
-import {addGuest, clearCounter, removeGuest} from '../../redux/roomSelectionReducer';
-import {getGuestString} from '../../utils';
+import DropdownItem from '../DropdownItem/DropdownItem'
+import {connect} from 'react-redux'
+import {getPropString} from '../../utils'
+import {addGuest, clearGuestsCounter, removeGuest} from '../../redux/actions'
+import {getGuests, getTotalGuests} from '../../redux/selectors'
 
-const SelectGuests = ({guests, addGuest, removeGuest, totalGuests, clearCounter}) => {
+const SelectGuests = ({guests, addGuest, removeGuest, totalGuests, clearGuestsCounter}) => {
   const [viewSelectGuests, setViewSelectGuests] = useState(false)
 
   return (
       <>
-        <div className="selection__guests">
+        <div className='selection__guests'>
           <h3>Гости</h3>
 
           <div
-              className="selection__guests_input"
+              className='selection__guests_input'
               onClick={() => setViewSelectGuests(!viewSelectGuests)}
-          ><span className="material-icons">{viewSelectGuests ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}</span>
-            {totalGuests} {getGuestString(totalGuests)}</div>
+          ><span className='material-icons'>{viewSelectGuests ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}</span>
+            {totalGuests || 'Сколько'} {getPropString(totalGuests, 'гость', 'гостя', 'гостей')}</div>
 
           {viewSelectGuests && <div className='selection__guests_dropdown'>
             {guests.map(guest => <DropdownItem
                 key={guest.type}
-                guest={guest}
-                addGuest={addGuest}
-                removeGuest={removeGuest}
+                item={guest}
+                add={addGuest}
+                remove={removeGuest}
             />)}
             <div className='selection__guests_dropdown-buttons'>
-              <div onClick={clearCounter}>Очистить</div>
+              <div onClick={clearGuestsCounter}>Очистить</div>
               <div onClick={() => setViewSelectGuests(false)}>Применить</div>
             </div>
           </div>}
-        </div>
-        <div className="selection__button">
-          <span className="material-icons">arrow_forward</span>
-          Подобрать номер
         </div>
       </>
   )
@@ -42,8 +39,8 @@ const SelectGuests = ({guests, addGuest, removeGuest, totalGuests, clearCounter}
 
 const mapStateToProps = (state) => {
   return {
-    guests: state.roomSelection.guests,
-    totalGuests: state.roomSelection.totalGuests
+    guests: getGuests(state),
+    totalGuests: getTotalGuests(state)
   }
 }
-export default connect(mapStateToProps, {addGuest, removeGuest, clearCounter})(SelectGuests);
+export default connect(mapStateToProps, {addGuest, removeGuest, clearGuestsCounter})(SelectGuests)

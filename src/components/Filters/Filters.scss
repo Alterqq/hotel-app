@@ -1,0 +1,109 @@
+@import "./src/styles/mixins";
+@import "./src/styles/variables";
+
+
+.filters {
+  position: relative;
+
+  &__item {
+    margin-bottom: 30px;
+    position: relative;
+
+    .arrow-down {
+      @include dropdown-arrow;
+      top: -5px;
+      right: 6px;
+    }
+
+    .selection__guests_input {
+      @include grey-text-color;
+    }
+  }
+
+  h3 {
+    @include title;
+    margin-bottom: 10px;
+    &.checkbox {
+      cursor: pointer;
+    }
+  }
+
+  &__dropdown {
+    position: absolute;
+    @include input;
+    left: 0;
+    right: 0;
+    overflow-y: auto;
+    z-index: 2;
+    background-color: white;
+    padding-top: 7px;
+    padding-bottom: 7px;
+
+    h3 {
+      margin-bottom: 0;
+    }
+
+    &-buttons {
+      padding-top: 12px;
+      @include clear-apply;
+    }
+
+    &-item {
+      background-color: #fff;
+    }
+  }
+
+  &__dropdown-input {
+    @include input;
+    @include grey-text-color;
+    cursor: pointer;
+
+    .arrow-down {
+      @include dropdown-arrow;
+      top: 34px;
+    }
+  }
+
+  &__price {
+    &_header {
+      display: flex;
+      justify-content: space-between;
+
+      h3 {
+        @include title;
+      }
+
+      span {
+        @include grey-text-color;
+        font-size: 12px;
+      }
+    }
+
+    &_description {
+      @include grey-text-color;
+      font-size: 12px;
+    }
+  }
+
+  .rail {
+    height: 6px;
+    border: $border;
+    border-radius: 3px;
+    background-color: white;
+  }
+
+  .track {
+    height: 6px;
+    background: $greenGradient;
+  }
+
+  .thumb {
+    background: $greenGradient;
+    top: 13px;
+    border: 2px solid white;
+    width: 16px;
+    height: 16px;
+  }
+}
+
+

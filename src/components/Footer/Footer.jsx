@@ -1,5 +1,5 @@
 import React from 'react'
-import './Footer.scss';
+import './Footer.scss'
 import logo from '../../assets/img/logo.svg'
 import tw from '../../assets/img/tw-icon.svg'
 import fb from '../../assets/img/fb-icon.svg'
@@ -11,7 +11,7 @@ const Footer = () => {
         <div className='footer__wrapper'>
           <div className='footer__info'>
             <div className='footer__list'>
-              <img src={logo} alt=""/>
+              <img src={logo} alt=''/>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, laudantium.</p>
             </div>
 
@@ -48,8 +48,8 @@ const Footer = () => {
               <h3 className='footer__list_title'>Подписка</h3>
               <p>Получайте специальные предложения и новости сервиса</p>
               <div className='footer__list_subscribe'>
-                <span className="material-icons">arrow_forward</span>
-                <input type="text" placeholder="Email"/>
+                <span className='material-icons'>arrow_forward</span>
+                <input type='text' placeholder='Email'/>
               </div>
             </div>
           </div>
@@ -67,4 +67,4 @@ const Footer = () => {
   )
 }
 
-export default Footer;
+export default Footer

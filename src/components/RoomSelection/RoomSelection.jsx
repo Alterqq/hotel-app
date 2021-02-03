@@ -1,41 +1,40 @@
 import React, {useState} from 'react'
-import {addDays} from 'date-fns';
 import './RoomSelection.scss'
-import Calendar from '../Calendar/Calendar';
-import SelectGuests from '../SelectGuests/SelectGuests';
-import DatesArea from './DatesArea/DatesArea';
+import Calendar from '../Calendar/Calendar'
+import SelectGuests from '../SelectGuests/SelectGuests'
+import DatesArea from './DatesArea/DatesArea'
+import {NavLink} from 'react-router-dom'
 
-const RoomSelection = () => {
-
-  const [date, setDate] = useState([
-    {
-      startDate: new Date(),
-      endDate: addDays(new Date(), 0),
-      key: 'selection'
-    }
-  ])
+const RoomSelection = ({date, setDate}) => {
   const [viewCalendar, setViewCalendar] = useState(false)
-
   return (
       <div className='selection'>
         <h2>Найдём номера под ваши пожелания</h2>
-        <div className="selection__dates">
+        <div className='selection__dates'>
           <DatesArea
+              title='Прибытие'
               viewCalendar={viewCalendar}
               setViewCalendar={setViewCalendar}
               date={date[0].startDate}/>
           <DatesArea
+              title='Выезд'
               viewCalendar={viewCalendar}
               setViewCalendar={setViewCalendar}
               date={date[0].endDate}/>
+          {viewCalendar && <Calendar
+              date={date}
+              setDate={setDate}
+              setView={setViewCalendar}/>}
         </div>
         <SelectGuests/>
-        {viewCalendar && <Calendar
-            date={date}
-            setDate={setDate}
-            setView={setViewCalendar}/>}
+        <NavLink to='/search'>
+          <div className='selection__button'>
+            <span className='material-icons'>arrow_forward</span>
+            Подобрать номер
+          </div>
+        </NavLink>
       </div>
   )
 }
 
-export default RoomSelection;
+export default RoomSelection

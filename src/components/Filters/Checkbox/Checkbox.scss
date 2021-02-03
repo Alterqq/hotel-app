@@ -1,0 +1,52 @@
+@import "./src/styles/mixins";
+@import "./src/styles/variables";
+
+
+.checkbox {
+  margin-bottom: 11px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+
+  input:checked,
+  input:not(:checked), {
+    position: absolute;
+    left: -99999px;
+  }
+
+  label {
+    @include grey-text-color;
+    margin-left: 30px;
+    cursor: pointer;
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border: $border;
+      border-radius: 4px;
+      left: 0;
+      top: -2px;
+      background-color: #fff;
+    }
+  }
+
+  input:checked {
+    & + label:after {
+      content: '';
+      position: absolute;
+      width: 6px;
+      height: 8px;
+      border-right: 2px solid $purpleText;
+      border-bottom: 2px solid $purpleText;
+      top: 2px;
+      left: 7px;
+      transform: rotate(45deg);
+    }
+    & + label:before {
+      border-color: $purpleText;
+    }
+  }
+}

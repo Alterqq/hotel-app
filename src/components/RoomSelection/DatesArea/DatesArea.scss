@@ -7,10 +7,10 @@
   span {
     @include dropdown-arrow;
   }
+  input {
+    width: 150px;
+    height: 44px;
+    @include input
+  }
 }
 
-input {
-  width: 150px;
-  height: 44px;
-  @include input
-}
