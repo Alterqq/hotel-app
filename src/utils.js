@@ -1,4 +1,3 @@
-
 export const getCounter = (state, action, key, addType, removeType) => {
   return state[key].map(item => {
     if (item.type === action.payload.type) {
@@ -16,7 +15,7 @@ export const clearCounter = (state, key) => {
   })
 }
 
-export const getTotalGuests = guests => {
+export const setTotalGuests = guests => {
   return guests.reduce((acc, guest) => {
     acc += guest.counter
     return acc
@@ -43,7 +42,7 @@ export const getDay = (date, key) => {
   return date[0][key].getDate()
 }
 
-export const getTotalFacilities = (facilities, total) => {
+export const setTotalFacilities = (facilities, total) => {
   facilities.forEach(c => {
     total[c.type] = c.counter
   })
@@ -69,7 +68,7 @@ export const getAllVotes = (votes) => {
 export const getDiffDays = (start, end) => {
   const t2 = end.getTime()
   const t1 = start.getTime()
-  return parseInt((t2-t1)/(24*3600*1000))
+  return parseInt((t2 - t1) / (24 * 3600 * 1000))
 }
 
 export const getAdditionallyCount = (additionally) => {

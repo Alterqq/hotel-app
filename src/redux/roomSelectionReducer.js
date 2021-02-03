@@ -1,4 +1,4 @@
-import {clearCounter, getCounter, getTotalFacilities, getTotalGuests} from '../utils'
+import {clearCounter, getCounter, setTotalFacilities, setTotalGuests} from '../utils'
 import {
   ADD_CONVENIENCE,
   ADD_GUEST, CLEAR_CONVENIENCE_COUNTER,
@@ -17,26 +17,26 @@ const roomSelectionReducer = (state = initialState, action) => {
       return {
         ...state,
         guests: getCounter(state, action, 'guests', ADD_GUEST, REMOVE_GUEST),
-        totalGuests: getTotalGuests(state.guests)
+        totalGuests: setTotalGuests(state.guests)
       }
     case CLEAR_GUESTS_COUNTER:
       return {
         ...state,
         guests: clearCounter(state, 'guests'),
-        totalGuests: getTotalGuests(state.guests)
+        totalGuests: setTotalGuests(state.guests)
       }
     case ADD_CONVENIENCE:
     case REMOVE_CONVENIENCE:
       return {
         ...state,
         facilities: getCounter(state, action, 'facilities', ADD_CONVENIENCE, REMOVE_CONVENIENCE),
-        totalFacilities: getTotalFacilities(state.facilities, state.totalFacilities)
+        totalFacilities: setTotalFacilities(state.facilities, state.totalFacilities)
       }
     case CLEAR_CONVENIENCE_COUNTER:
       return {
         ...state,
         facilities: clearCounter(state, 'facilities'),
-        totalFacilities: getTotalFacilities(state.facilities, state.totalFacilities)
+        totalFacilities: setTotalFacilities(state.facilities, state.totalFacilities)
       }
     case SET_FILTERS:
       return {
@@ -47,27 +47,20 @@ const roomSelectionReducer = (state = initialState, action) => {
       return {...state, profile: action.payload}
     case ROOM_BOOKING:
       return {
-        ...state, rooms: state.rooms.map(room => {
+        ...state,
+        rooms: state.rooms.map(room => {
           if (room.number === action.payload.number) {
-            return {
-              ...room,
-              filter: {
-                ...action.payload,
-                guests: room.filter.guests,
-                price: room.filter.price,
-                withGuests: room.filter.withGuests,
-                withCorridor: room.filter.withCorridor,
-                withHelper: room.filter.withHelper,
-                additionally: {...room.filter.additionally},
-                bedrooms: room.filter.bedrooms,
-                beds: room.filter.beds,
-                bathrooms: room.filter.bathrooms,
+            const keys = Object.keys(room.filter)
+            keys.forEach(key => {
+              if (action.payload[key]) {
+                room.filter[key] = action.payload[key]
               }
-            }
+            })
           }
           return room
         })
       }
+
     default:
       return state
   }

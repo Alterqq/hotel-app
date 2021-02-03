@@ -16,3 +16,4 @@ export const setRoomProfile = (profile) => ({type: SET_ROOM_PROFILE, payload: pr
 export const clearConvenienceCounter = () => ({type: CLEAR_CONVENIENCE_COUNTER})
 export const setFilters = (initialFilters) => ({type: SET_FILTERS, payload: initialFilters})
 export const roomBooking = (payload) => ({type: ROOM_BOOKING, payload})
+

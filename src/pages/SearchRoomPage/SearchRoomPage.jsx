@@ -6,7 +6,7 @@ import './SearchRoomPage.scss'
 const SearchRoomPage = ({date, setDate}) => {
   return (
       <div className='search-room'>
-        <div className="search-room__wrapper">
+        <div className='search-room__wrapper'>
           <Filters date={date} setDate={setDate}/>
           <SearchingResults/>
         </div>

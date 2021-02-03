@@ -1,15 +1,16 @@
 import React, {useEffect, useState} from 'react'
+import {addDays} from 'date-fns'
+import DatesArea from '../RoomSelection/DatesArea/DatesArea'
+import Calendar from '../Calendar/Calendar'
+import SelectGuests from '../SelectGuests/SelectGuests'
+import {getAdditionallyCount, getDiffDays, getPropString} from '../../utils'
 import './Booking.scss'
-import DatesArea from '../RoomSelection/DatesArea/DatesArea';
-import Calendar from '../Calendar/Calendar';
-import SelectGuests from '../SelectGuests/SelectGuests';
-import {getAdditionallyCount, getDiffDays, getPropString} from '../../utils';
 
 const Booking = ({date, setDate, profile, filter, totalGuests, ...props}) => {
   const days = getDiffDays(date[0].startDate, date[0].endDate)
   const price = profile.filter.price
   const daysPrice = price * days
-  const additionallyPrice = getAdditionallyCount(filter) * 300
+  const additionallyPrice = getAdditionallyCount(filter.additionally) * 200
   const [viewCalendar, setViewCalendar] = useState(false)
   const [isFree, setIsFree] = useState(true)
   const [isGuests, setIsGuests] = useState(true)
@@ -19,7 +20,7 @@ const Booking = ({date, setDate, profile, filter, totalGuests, ...props}) => {
   const startRoom = profile.filter.startDate.getTime()
   const endRoom = profile.filter.endDate.getTime()
   useEffect(() => {
-    if (startUser > startRoom && endUser < endRoom) {
+    if (startUser >= startRoom && endUser < endRoom) {
       setIsFree(true)
     } else {
       setIsFree(false)
@@ -40,9 +41,7 @@ const Booking = ({date, setDate, profile, filter, totalGuests, ...props}) => {
       startDate: date[0].startDate,
       endDate: date[0].endDate
     })
-    console.log('click')
   }
-
   return (
       <div className='booking'>
         <div className='booking__description'>
@@ -50,8 +49,8 @@ const Booking = ({date, setDate, profile, filter, totalGuests, ...props}) => {
             №<h3>{profile.number}</h3>
             {profile.isLuxury && <span>Люкс</span>}
           </div>
-          <span className="booking__description_price">
-              <span>{price}Р </span>
+          <span className='booking__description_price'>
+              <span>{price.toLocaleString()}Р </span>
               в сутки
             </span>
         </div>
@@ -70,37 +69,34 @@ const Booking = ({date, setDate, profile, filter, totalGuests, ...props}) => {
               date={date}
               setDate={setDate}
               setView={setViewCalendar}/>}
-          {!isFree && <p>Номер уже забронирован на выбранные даты</p>}
+          {!isFree && <p>
+            Номер свободен с {addDays(profile.filter.startDate, 1).toLocaleDateString()} по {profile.filter.endDate.toLocaleDateString()}
+          </p>}
         </div>
-
-
-        <div className="booking__guests">
+        <div className='booking__guests'>
           <SelectGuests/>
           {!isGuests && <p>Вы не указали ни одного гостя, либо данный номер не позволяет вместить столько гостей</p>}
         </div>
-
-        <div className="booking__price">
+        <div className='booking__price'>
           <div>
-            <span>{price} x {days} {getPropString(days, 'ночь', 'ночи', 'ночей')}</span>
-            <span>{daysPrice}Р</span>
+            <span>{price.toLocaleString()} x {days} {getPropString(days, 'ночь', 'ночи', 'ночей')}</span>
+            <span>{daysPrice.toLocaleString()}Р</span>
           </div>
           <div>
             <span>Сбор за доп. услуги</span>
-            <span>{additionallyPrice}Р</span>
+            <span>{additionallyPrice.toLocaleString()}Р</span>
           </div>
         </div>
-
-        <div className="booking__total">
+        <div className='booking__total'>
           <h4>Итого</h4>
           <span/>
-          <h4>{daysPrice + additionallyPrice}Р</h4>
+          <h4>{(daysPrice + additionallyPrice).toLocaleString()}Р</h4>
         </div>
-
         <button
             onClick={onBooking}
             disabled={!isFree && !isGuests}
             className={isFree && isGuests ? 'booking__button' : 'booking__button disabled'}>
-          <span className="material-icons">arrow_forward</span>
+          <span className='material-icons'>arrow_forward</span>
           Забронировать
         </button>
       </div>

@@ -3,14 +3,14 @@ import './RoomSelection.scss'
 import Calendar from '../Calendar/Calendar'
 import SelectGuests from '../SelectGuests/SelectGuests'
 import DatesArea from './DatesArea/DatesArea'
-import {NavLink} from 'react-router-dom';
+import {NavLink} from 'react-router-dom'
 
 const RoomSelection = ({date, setDate}) => {
   const [viewCalendar, setViewCalendar] = useState(false)
   return (
       <div className='selection'>
         <h2>Найдём номера под ваши пожелания</h2>
-        <div className="selection__dates">
+        <div className='selection__dates'>
           <DatesArea
               title='Прибытие'
               viewCalendar={viewCalendar}
@@ -28,8 +28,8 @@ const RoomSelection = ({date, setDate}) => {
         </div>
         <SelectGuests/>
         <NavLink to='/search'>
-          <div className="selection__button">
-            <span className="material-icons">arrow_forward</span>
+          <div className='selection__button'>
+            <span className='material-icons'>arrow_forward</span>
             Подобрать номер
           </div>
         </NavLink>

@@ -1,11 +1,11 @@
 import React from 'react'
-import {PieChart, Pie, Cell} from 'recharts';
+import {PieChart, Pie, Cell} from 'recharts'
 import smile from '../../assets/img/smile.svg'
 import building from '../../assets/img/bulding.svg'
 import fire from '../../assets/img/fire.svg'
+import AboutItem from './AboutItem/AboutItem'
+import {getAllVotes, getPropString} from '../../utils'
 import './RoomProfileAbout.scss'
-import AboutItem from './AboutItem/AboutItem';
-import {getAllVotes, getPropString} from '../../utils';
 
 const RoomProfileAbout = ({profile}) => {
   const votes = [
@@ -18,14 +18,14 @@ const RoomProfileAbout = ({profile}) => {
   const allVotes = getAllVotes(profile.votes)
   return (
       <>
-        <div className="room-profile__about">
-          <div className="room-profile__about_data">
+        <div className='room-profile__about'>
+          <div className='room-profile__about_data'>
             <h3>Сведения о номере</h3>
             {profile.comfort && <AboutItem image={smile} title='Комфорт' content={profile.comfort}/>}
             {profile.convenience && <AboutItem image={building} title='Удобство' content={profile.convenience}/>}
             {profile.cosiness && <AboutItem image={fire} title='Уют' content={profile.cosiness}/>}
           </div>
-          <div className="room-profile__about_impressions">
+          <div className='room-profile__about_impressions'>
             <h3>Впечатления о номере</h3>
             <div className='room-profile__about_votes'>
               <div className='room-profile__about_votes-number'>
@@ -33,7 +33,7 @@ const RoomProfileAbout = ({profile}) => {
                 <span>{getPropString(allVotes, 'голос', 'голоса', 'голосов')}</span>
               </div>
               <PieChart width={130} height={130}>
-                <Pie dataKey="value"
+                <Pie dataKey='value'
                      isAnimationActive={false}
                      data={votes}
                      cx={60} cy={60}

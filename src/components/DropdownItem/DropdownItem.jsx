@@ -5,8 +5,8 @@ const DropdownItem = ({item, add, remove}) => {
   return (
       <>
         <div className='dropdown-item'>
-          <h3 className="dropdown-title">{item.title}</h3>
-          <div className="dropdown-counter">
+          <h3 className='dropdown-title'>{item.title}</h3>
+          <div className='dropdown-counter'>
             {item.counter > 0 && <div
                 className='dropdown-counter-button'
                 onClick={() => remove(item)}

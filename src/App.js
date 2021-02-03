@@ -1,19 +1,19 @@
 import React, {useState} from 'react'
 import {addDays} from 'date-fns'
 import Header from './components/Header/Header'
-import {compose} from 'redux';
-import {Route, withRouter} from 'react-router-dom';
-import Footer from './components/Footer/Footer';
-import RoomProfilePage from './pages/RoomProfilePage/RoomProfilePage';
+import {compose} from 'redux'
+import {Route, withRouter} from 'react-router-dom'
+import Footer from './components/Footer/Footer'
+import RoomProfilePage from './pages/RoomProfilePage/RoomProfilePage'
+import LandingPage from './pages/LandingPage/LandingPage'
+import SearchRoomPage from './pages/SearchRoomPage/SearchRoomPage'
 import './App.scss'
-import LandingPage from './pages/LandingPage/LandingPage';
-import SearchRoomPage from './pages/SearchRoomPage/SearchRoomPage';
 
 const App = () => {
   const [date, setDate] = useState([
     {
-      startDate: new Date(),
-      endDate: addDays(new Date(), 2),
+      startDate: addDays(new Date(), 1),
+      endDate: addDays(new Date(), 5),
       key: 'selection'
     }
   ])
