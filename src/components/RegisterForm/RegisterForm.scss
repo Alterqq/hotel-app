@@ -1,0 +1,145 @@
+@import "./src/styles/mixins";
+@import "./src/styles/variables";
+
+.registration__form {
+  form {
+    p {
+      color: red;
+      margin-bottom: 10px;
+      font-size: 12px;
+    }
+
+    display: flex;
+    flex-direction: column;
+
+    input[type="text"] {
+      @include input;
+      margin-bottom: 10px;
+    }
+
+    .button {
+      @include button-gradient;
+      border: none;
+      outline: none;
+      position: relative;
+      margin: 10px 0 30px 0;
+
+      .arrow-forward {
+        position: absolute;
+        right: 7px;
+        top: 5px;
+      }
+    }
+
+    .sex {
+      input[type="radio"]:checked,
+      input[type="radio"]:not(:checked) {
+        position: absolute;
+        left: -9999px;
+      }
+
+      input[type="radio"]:checked + label,
+      input[type="radio"]:not(:checked) + label {
+        display: inline-block;
+        position: relative;
+        padding-left: 30px;
+        cursor: pointer;
+        margin-right: 15px;
+        margin-bottom: 20px;
+      }
+
+      input[type="radio"]:checked + label:before,
+      input[type="radio"]:not(:checked) + label:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: -3px;
+        width: 20px;
+        height: 20px;
+        border: $border;
+        background-color: #ffffff;
+        border-radius: 100%;
+      }
+
+      input[type="radio"]:checked + label:after,
+      input[type="radio"]:not(:checked) + label:after {
+        content: "";
+        position: absolute;
+        -webkit-transition: all 0.2s ease;
+        -moz-transition: all 0.2s ease;
+        -o-transition: all 0.2s ease;
+        transition: all 0.2s ease;
+        left: 5px;
+        top: 2px;
+        width: 12px;
+        height: 12px;
+        border-radius: 100%;
+        background: $gradient;
+      }
+
+      input[type="radio"]:not(:checked) + label:after {
+        opacity: 0;
+      }
+
+      input[type="radio"]:checked + label:after {
+        opacity: 1;
+      }
+
+    }
+
+    h3 {
+      @include title;
+      margin-bottom: 5px;
+    }
+
+    .date-birth {
+      input {
+        margin-bottom: 20px;
+        width: 100%;
+      }
+    }
+
+
+    .track {
+      background-color: #fff;
+      border: $border;
+      width: 40px;
+      height: 20px;
+      border-radius: 10px;
+    }
+
+    .root {
+      padding: 0;
+      width: 40px;
+      height: 20px;
+    }
+
+    .switchBase {
+      @include grey-text-color;
+      top: -5px;
+      left: -5px;
+    }
+
+    .thumb {
+      width: 12px;
+      height: 12px;
+    }
+
+    .checked + .track {
+      background-color: #fff;
+    }
+
+    .checked {
+      color: $purpleText;
+    }
+
+
+    .subscribe {
+      margin-bottom: 20px;
+      label {
+        margin-left: 10px;
+        @include grey-text-color(0.75)
+      }
+    }
+  }
+}

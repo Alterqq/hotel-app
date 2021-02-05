@@ -8,6 +8,8 @@ import RoomProfilePage from './pages/RoomProfilePage/RoomProfilePage'
 import LandingPage from './pages/LandingPage/LandingPage'
 import SearchRoomPage from './pages/SearchRoomPage/SearchRoomPage'
 import './App.scss'
+import LoginPage from './pages/LoginPage/LoginPage';
+import RegisterPage from './pages/RegisterPage/RegisterPage';
 
 const App = () => {
   const [date, setDate] = useState([
@@ -24,6 +26,8 @@ const App = () => {
           <Route exact path="/" render={() => <LandingPage date={date} setDate={setDate}/>}/>
           <Route path="/search" render={() => <SearchRoomPage date={date} setDate={setDate}/>}/>
           <Route path="/rooms/:number" render={() => <RoomProfilePage date={date} setDate={setDate}/>}/>
+          <Route path="/login" render={() => <LoginPage />}/>
+          <Route path="/registration" render={() => <RegisterPage />}/>
 
         <Footer/>
       </div>

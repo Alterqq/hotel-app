@@ -11,16 +11,17 @@ import Booking from '../../components/Booking/Booking'
 import {roomBooking, setRoomProfile} from '../../redux/actions'
 import {setRoom} from '../../utils'
 import Loader from '../../components/common/Loader/Loader'
-import {getFilter, getProfile, getRooms, getTotalGuests} from '../../redux/selectors'
+import {getFilter, getRoomProfile, getRooms, getTotalGuests} from '../../redux/selectors'
+import {withAuthRedirect} from '../../hoc/withAuthRedirect';
 import './RoomProfilePage.scss'
 
-const RoomProfilePage = ({date, setDate, rooms, profile, setRoomProfile, ...props}) => {
+const RoomProfilePage = ({date, setDate, rooms, roomProfile, setRoomProfile, ...props}) => {
 
   useEffect(() => {
     setRoom(rooms, props.match.params.number, setRoomProfile)
   }, [rooms, props.match.params.number, setRoomProfile])
 
-  if (!profile) return <Loader/>
+  if (!roomProfile) return <Loader/>
 
   return (
       <div className='room-profile'>
@@ -31,8 +32,8 @@ const RoomProfilePage = ({date, setDate, rooms, profile, setRoomProfile, ...prop
         </div>
         <div className='room-profile__wrapper'>
           <div className='room-profile__info'>
-            <RoomProfileAbout profile={profile}/>
-            <RoomRules profile={profile}/>
+            <RoomProfileAbout profile={roomProfile}/>
+            <RoomRules profile={roomProfile}/>
           </div>
           <div className='room-profile__booking'>
             <Booking
@@ -41,7 +42,7 @@ const RoomProfilePage = ({date, setDate, rooms, profile, setRoomProfile, ...prop
                 roomBooking={props.roomBooking}
                 date={date}
                 setDate={setDate}
-                profile={profile}
+                profile={roomProfile}
                 rooms={rooms}/>
           </div>
         </div>
@@ -50,7 +51,7 @@ const RoomProfilePage = ({date, setDate, rooms, profile, setRoomProfile, ...prop
 }
 const mapStateToProps = state => {
   return {
-    profile: getProfile(state),
+    roomProfile: getRoomProfile(state),
     rooms: getRooms(state),
     filter: getFilter(state),
     totalGuests: getTotalGuests(state)
@@ -58,5 +59,6 @@ const mapStateToProps = state => {
 }
 export default compose(
     connect(mapStateToProps, {setRoomProfile, roomBooking}),
-    withRouter
+    withRouter,
+    withAuthRedirect
 )(RoomProfilePage)

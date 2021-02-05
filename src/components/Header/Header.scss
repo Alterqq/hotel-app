@@ -19,6 +19,10 @@
     display: flex;
     align-items: center;
 
+    a {
+      text-decoration: none;
+    }
+
     &_reg {
       @include button-gradient;
     }
@@ -27,5 +31,11 @@
       @include button-white;
       margin-right: 20px;
     }
+  }
+
+  &__authorized {
+    display: flex;
+    align-items: center;
+    gap: 20px;
   }
 }

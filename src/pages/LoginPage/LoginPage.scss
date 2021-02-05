@@ -1,0 +1,42 @@
+@import "./src/styles/mixins";
+@import "./src/styles/variables";
+
+.login {
+  background-image: url('../../assets/img/login-background.png');
+  max-width: 1440px;
+  height: 772px;
+
+  &__wrapper {
+    margin: auto;
+    width: 376px;
+    padding-top: 172px;
+  }
+
+  &__form {
+    border: $border;
+    background-color: #fff;
+    padding: 40px 30px 30px 30px;
+
+    h3 {
+      font: {
+        size: 24px;
+        weight: bold;
+      }
+      margin-bottom: 20px;
+    }
+  }
+
+  &__create {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    a {
+      text-decoration: none;
+    }
+
+    &_button {
+      @include button-white;
+    }
+  }
+}
