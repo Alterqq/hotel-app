@@ -2,6 +2,7 @@ import React from 'react'
 import Filters from '../../components/Filters/Filters'
 import SearchingResults from '../../components/SearchingResults/SearchingResults'
 import './SearchRoomPage.scss'
+import {withAuthRedirect} from '../../hoc/withAuthRedirect';
 
 const SearchRoomPage = ({date, setDate}) => {
   return (
@@ -14,4 +15,4 @@ const SearchRoomPage = ({date, setDate}) => {
   )
 }
 
-export default SearchRoomPage
+export default withAuthRedirect(SearchRoomPage)
