@@ -1,4 +1,4 @@
-import {LOGIN, LOGOUT, SET_USER_PROFILE} from './types';
+import {LOGIN, LOGOUT, REGISTRATION, SET_USER_PROFILE} from './types';
 
 const initialState = {
   users: [
@@ -26,6 +26,11 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         userProfile: action.payload
+      }
+    case REGISTRATION:
+      return {
+        ...state,
+        users: [...state.users, action.payload]
       }
     default:
       return state

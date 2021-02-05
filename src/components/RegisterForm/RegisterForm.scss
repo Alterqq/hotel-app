@@ -12,7 +12,7 @@
     display: flex;
     flex-direction: column;
 
-    input[type="text"] {
+    input[type="text"], input[type="password"] {
       @include input;
       margin-bottom: 10px;
     }
