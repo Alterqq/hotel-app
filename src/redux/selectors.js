@@ -1,4 +1,5 @@
 import {createSelector} from 'reselect'
+import {checkBooleanRoom, checkFreeRoom} from '../utils';
 
 export const getRooms = (state) => state.roomSelection.rooms
 export const getDefaultDate = (state) => state.roomSelection.defaultDate
@@ -15,34 +16,26 @@ export const getAuth = (state) => state.auth.isAuth
 export const filteredRooms = createSelector(getRooms, getFilter,
     (rooms, filter) => {
       const filtered = []
+      const booleanKeys = [
+        'withSmoke',
+        'withPets',
+        'withGuests',
+        'withCorridor',
+        'withHelper',
+      ]
       rooms.forEach(room => {
-        const startRoom = room.filter.startDate.getTime()
-        const endRoom = room.filter.endDate.getTime()
-        const startUser = filter.startDate.getTime()
-        const endUser = filter.endDate.getTime()
-
-        if (startUser >= startRoom && endUser <= endRoom) {
+        const roomDates = room.filter.dates
+        const startUser = filter.startDate
+        const endUser = filter.endDate
+        if (checkFreeRoom(startUser, endUser, roomDates)) {
           if (filter.guests <= room.filter.guests) {
             if (room.filter.price >= filter.startPrice
                 && room.filter.price <= filter.endPrice) {
               if (filter.bedrooms <= room.filter.bedrooms
                   && filter.beds <= room.filter.beds
                   && filter.bathrooms <= room.filter.bathrooms) {
-                if ((filter.withSmoke && room.filter.withSmoke)
-                    || !filter.withSmoke) {
-                  if ((filter.withPets && room.filter.withPets)
-                      || !filter.withPets) {
-                    if ((filter.withGuests && room.filter.withGuests)
-                        || !filter.withGuests) {
-                      if ((filter.withCorridor && room.filter.withCorridor)
-                          || !filter.withCorridor) {
-                        if ((filter.withHelper && room.filter.withHelper)
-                            || !filter.withHelper) {
-                          filtered.push(room)
-                        }
-                      }
-                    }
-                  }
+                if (checkBooleanRoom(booleanKeys, room, filter)) {
+                  filtered.push(room)
                 }
               }
             }
@@ -51,3 +44,4 @@ export const filteredRooms = createSelector(getRooms, getFilter,
       })
       return filtered
     })
+

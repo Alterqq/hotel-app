@@ -1,7 +1,7 @@
 import React from 'react'
 import './LoginPage.scss'
-import LoginForm from '../../components/LoginForm/LoginForm'
 import {NavLink} from 'react-router-dom';
+import LoginFormContainer from '../../components/LoginForm/LoginFormContainer';
 
 const LoginPage = () => {
   return (
@@ -9,7 +9,7 @@ const LoginPage = () => {
         <div className='login__wrapper'>
           <div className='login__form'>
             <h3>Войти</h3>
-            <LoginForm />
+            <LoginFormContainer />
             <div className='login__create'>
               <p>Нет аккаунта на Toxin?</p>
               <NavLink to='/registration'>

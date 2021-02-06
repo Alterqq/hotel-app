@@ -7,13 +7,13 @@ import large2 from '../../assets/img/room-large2.png'
 import large3 from '../../assets/img/room-large3.png'
 import RoomProfileAbout from '../../components/RoomProfileAbout/RoomProfileAbout'
 import RoomRules from '../../components/RoomRules/RoomRules'
-import Booking from '../../components/Booking/Booking'
 import {roomBooking, setRoomProfile} from '../../redux/actions'
 import {setRoom} from '../../utils'
 import Loader from '../../components/common/Loader/Loader'
 import {getFilter, getRoomProfile, getRooms, getTotalGuests} from '../../redux/selectors'
 import {withAuthRedirect} from '../../hoc/withAuthRedirect';
 import './RoomProfilePage.scss'
+import BookingContainer from '../../components/Booking/BookingContainer';
 
 const RoomProfilePage = ({date, setDate, rooms, roomProfile, setRoomProfile, ...props}) => {
 
@@ -36,7 +36,7 @@ const RoomProfilePage = ({date, setDate, rooms, roomProfile, setRoomProfile, ...
             <RoomRules profile={roomProfile}/>
           </div>
           <div className='room-profile__booking'>
-            <Booking
+            <BookingContainer
                 totalGuests={props.totalGuests}
                 filter={props.filter}
                 roomBooking={props.roomBooking}

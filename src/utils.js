@@ -79,3 +79,26 @@ export const getAdditionallyCount = (additionally) => {
   })
   return counter
 }
+
+const getDate = (filter, key) => {
+  if (typeof filter[key] === 'string') {
+    return new Date(filter[key])
+  } else {
+    return filter[key]
+  }
+}
+
+export const checkFreeRoom = (start, end, dates) => {
+  return dates.every(date => {
+    const startDate = getDate(date, 'startDate')
+    const endDate = getDate(date, 'endDate')
+    return (start < startDate && end < startDate) || (start > endDate && end > endDate)
+  })
+}
+
+export const checkBooleanRoom = (keys, room, filter) => {
+  return keys.every(key => {
+    return (filter[key] && room.filter[key])
+        || !filter[key]
+  })
+}

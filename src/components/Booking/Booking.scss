@@ -104,6 +104,17 @@
     }
   }
 
+  &__success {
+    p {
+      color: #6FCF97;
+      margin-bottom: 10px;
+    }
+    a {
+      text-decoration: none;
+      @include grey-text-color
+    }
+  }
+
   .disabled {
     background: $opacityGradient;
   }
