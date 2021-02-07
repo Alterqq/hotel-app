@@ -1,47 +1,18 @@
-import React, {useEffect, useState} from 'react'
-import {addDays} from 'date-fns'
+import React from 'react'
 import DatesArea from '../RoomSelection/DatesArea/DatesArea'
 import Calendar from '../Calendar/Calendar'
 import SelectGuests from '../SelectGuests/SelectGuests'
-import {getAdditionallyCount, getDiffDays, getPropString} from '../../utils'
+import {getPropString} from '../../utils'
 import './Booking.scss'
+import {NavLink} from 'react-router-dom';
 
-const Booking = ({date, setDate, profile, filter, totalGuests, ...props}) => {
-  const days = getDiffDays(date[0].startDate, date[0].endDate)
-  const price = profile.filter.price
-  const daysPrice = price * days
-  const additionallyPrice = getAdditionallyCount(filter.additionally) * 200
-  const [viewCalendar, setViewCalendar] = useState(false)
-  const [isFree, setIsFree] = useState(true)
-  const [isGuests, setIsGuests] = useState(true)
-
-  const startUser = date[0].startDate.getTime()
-  const endUser = date[0].endDate.getTime()
-  const startRoom = profile.filter.startDate.getTime()
-  const endRoom = profile.filter.endDate.getTime()
-  useEffect(() => {
-    if (startUser >= startRoom && endUser < endRoom) {
-      setIsFree(true)
-    } else {
-      setIsFree(false)
-    }
-  }, [setIsFree, isFree, startUser, startRoom, endUser, endRoom])
-
-  useEffect(() => {
-    if (totalGuests > profile.filter.guests || totalGuests === 0) {
-      setIsGuests(false)
-    } else {
-      setIsGuests(true)
-    }
-  }, [totalGuests, profile, setIsGuests, isGuests])
-
-  const onBooking = () => {
-    props.roomBooking({
-      number: profile.number,
-      startDate: date[0].startDate,
-      endDate: date[0].endDate
-    })
-  }
+const Booking = ({
+                   profile, price, viewCalendar,
+                   setViewCalendar, date, setDate,
+                   isFree, isGuests, days, daysPrice,
+                   additionallyPrice, onBooking,
+                   bookingSuccess
+                 }) => {
   return (
       <div className='booking'>
         <div className='booking__description'>
@@ -69,17 +40,31 @@ const Booking = ({date, setDate, profile, filter, totalGuests, ...props}) => {
               date={date}
               setDate={setDate}
               setView={setViewCalendar}/>}
-          {!isFree && <p>
-            Номер свободен с {addDays(profile.filter.startDate, 1).toLocaleDateString()} по {profile.filter.endDate.toLocaleDateString()}
+          {!isFree && !bookingSuccess && <p>
+            На выбранные даты номер уже забронирован
           </p>}
+          <div className='booking__success'>
+            {bookingSuccess &&
+            <>
+              <p>Номер успешно забронирован</p>
+              <NavLink to='/'>Вернуться на главную</NavLink>
+            </>
+            }
+          </div>
+
         </div>
         <div className='booking__guests'>
           <SelectGuests/>
-          {!isGuests && <p>Вы не указали ни одного гостя, либо данный номер не позволяет вместить столько гостей</p>}
+          {!isGuests &&
+          <p>
+            Вы не указали ни одного гостя, либо данный номер не позволяет вместить столько гостей
+          </p>}
         </div>
         <div className='booking__price'>
           <div>
-            <span>{price.toLocaleString()} x {days} {getPropString(days, 'ночь', 'ночи', 'ночей')}</span>
+            <span>
+              {price.toLocaleString()} x {days} {getPropString(days, 'ночь', 'ночи', 'ночей')}
+            </span>
             <span>{daysPrice.toLocaleString()}Р</span>
           </div>
           <div>

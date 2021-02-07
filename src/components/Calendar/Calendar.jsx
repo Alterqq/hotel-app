@@ -1,12 +1,12 @@
 import React from 'react'
+import 'react-date-range/dist/styles.css'
+import 'react-date-range/dist/theme/default.css'
 import {DateRange} from 'react-date-range'
 import {ru} from 'react-date-range/dist/locale'
 import {addDays} from 'date-fns'
-import 'react-date-range/dist/styles.css'
-import 'react-date-range/dist/theme/default.css'
-import './Calendar.scss'
 import {connect} from 'react-redux'
 import {getDefaultDate} from '../../redux/selectors'
+import './Calendar.scss'
 
 
 const Calendar = ({date, setDate, setView, ...props}) => {

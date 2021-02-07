@@ -19,7 +19,6 @@ const RoomRules = ({profile}) => {
               </p>
               : <p>Отмена бронирования невозможна</p>
           }
-
         </div>
       </div>
   )
